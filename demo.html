@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Демо - Космотерапия</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cosmic-style.css">
+    <style>
+        /* Demo-specific styles */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .demo-section {
+            margin-bottom: 80px;
+        }
+        
+        .demo-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #8B5CF6, #06B6D4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .demo-card {
+            background: rgba(15, 15, 25, 0.8);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .demo-card h3 {
+            color: #ffffff;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+        
+        .demo-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        .component-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .test-btn {
+            margin: 8px;
+        }
+        
+        .form-test {
+            margin-top: 16px;
+        }
+        
+        .mini-orb {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #8B5CF6, #4C1D95);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+            display: inline-block;
+            margin-right: 16px;
+            animation: pulse 2s infinite;
+        }
+        
+        .mini-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8B5CF6, #06B6D4);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-right: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <!-- Demo Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">🌟 КОСМОТЕРАПИЯ ДЕМО</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Полная версия</a>
+                <a href="#components" class="nav-link">Компоненты</a>
+                <a href="#test" class="nav-link">Тестирование</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="demo-container">
+        <!-- Hero Demo -->
+        <section class="demo-section">
+            <div class="demo-title">Демонстрация Компонентов</div>
+            <div class="hero" style="padding: 40px 0;">
+                <h1 class="hero-title" style="font-size: 36px;">Космическая Трансформация</h1>
+                <h2 class="hero-subtitle" style="font-size: 20px;">Путь к новому сознанию</h2>
+                <p class="hero-description" style="font-size: 16px;">
+                    Демонстрация современного дизайна с космической тематикой
+                </p>
+                <button class="btn btn--primary btn--lg hero-cta">Начать демо</button>
+            </div>
+        </section>
+
+        <!-- Component Showcase -->
+        <section id="components" class="demo-section">
+            <h2 class="demo-title">Компоненты</h2>
+            
+            <div class="demo-grid">
+                <!-- Buttons Demo -->
+                <div class="demo-card">
+                    <h3>Кнопки</h3>
+                    <p>Различные стили кнопок с космическими эффектами</p>
+                    <div class="component-showcase">
+                        <button class="btn btn--primary test-btn">Основная</button>
+                        <button class="btn btn--outline test-btn">Контурная</button>
+                        <button class="btn btn--primary btn--lg test-btn">Большая</button>
+                    </div>
+                </div>
+
+                <!-- Cards Demo -->
+                <div class="demo-card">
+                    <h3>Карточки</h3>
+                    <p>Адаптивные карточки с эффектами наведения</p>
+                    <div class="avatar-card" style="margin-top: 16px; max-width: 280px;">
+                        <div class="mini-avatar">👨‍🚀</div>
+                        <h4>Космический Гид</h4>
+                        <p class="avatar-specialization">Демо персонаж</p>
+                        <p class="avatar-description">Пример карточки аватара с анимациями</p>
+                    </div>
+                </div>
+
+                <!-- Forms Demo -->
+                <div class="demo-card">
+                    <h3>Формы</h3>
+                    <p>Стилизованные элементы форм</p>
+                    <div class="form-test">
+                        <input type="text" class="form-control" placeholder="Введите текст..." style="margin-bottom: 12px;">
+                        <textarea class="form-control" placeholder="Сообщение..." rows="3"></textarea>
+                    </div>
+                </div>
+
+                <!-- Animation Demo -->
+                <div class="demo-card">
+                    <h3>Анимации</h3>
+                    <p>Космические эффекты и анимации</p>
+                    <div class="component-showcase">
+                        <div class="mini-orb"></div>
+                        <button class="btn btn--primary" id="demo-animation">Запустить анимацию</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Test -->
+        <section id="test" class="demo-section">
+            <h2 class="demo-title">Интерактивное Тестирование</h2>
+            
+            <div class="demo-grid">
+                <!-- Modal Test -->
+                <div class="demo-card">
+                    <h3>Модальные окна</h3>
+                    <p>Тест функциональности модальных окон</p>
+                    <button class="btn btn--outline" id="test-modal">Открыть модальное окно</button>
+                </div>
+
+                <!-- Navigation Test -->
+                <div class="demo-card">
+                    <h3>Навигация</h3>
+                    <p>Тест клавишных сочетаний</p>
+                    <ul style="color: rgba(255, 255, 255, 0.8); font-size: 14px; margin: 16px 0;">
+                        <li>ESC - закрыть модальные окна</li>
+                        <li>Стрелки ← → - навигация</li>
+                        <li>Enter - отправка в чате</li>
+                    </ul>
+                </div>
+
+                <!-- Effects Test -->
+                <div class="demo-card">
+                    <h3>Визуальные эффекты</h3>
+                    <p>Тест параллакса и анимаций</p>
+                    <button class="btn btn--primary" id="test-parallax">Включить параллакс</button>
+                </div>
+
+                <!-- Performance Test -->
+                <div class="demo-card">
+                    <h3>Производительность</h3>
+                    <p>Информация о загрузке и отрисовке</p>
+                    <div id="perf-info" style="font-size: 12px; color: #8B5CF6; margin-top: 12px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature List -->
+        <section class="demo-section">
+            <h2 class="demo-title">Реализованные Возможности</h2>
+            
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h3>🎨 Дизайн</h3>
+                    <ul style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                        <li>Космическая цветовая схема</li>
+                        <li>Анимированный звездный фон</li>
+                        <li>Градиентные эффекты</li>
+                        <li>Глубина и размытие</li>
+                    </ul>
+                </div>
+
+                <div class="demo-card">
+                    <h3>⚡ Интерактивность</h3>
+                    <ul style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                        <li>Плавные переходы страниц</li>
+                        <li>Анимации при скролле</li>
+                        <li>Клавиатурная навигация</li>
+                        <li>Адаптивные эффекты</li>
+                    </ul>
+                </div>
+
+                <div class="demo-card">
+                    <h3>📱 Адаптивность</h3>
+                    <ul style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                        <li>Мобильная оптимизация</li>
+                        <li>Гибкая сетка</li>
+                        <li>Масштабируемые элементы</li>
+                        <li>Touch-friendly интерфейс</li>
+                    </ul>
+                </div>
+
+                <div class="demo-card">
+                    <h3>🔧 Техническая часть</h3>
+                    <ul style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                        <li>Modern CSS (Grid, Flexbox)</li>
+                        <li>Vanilla JavaScript ES6+</li>
+                        <li>Intersection Observer API</li>
+                        <li>CSS Custom Properties</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Test Modal -->
+    <div id="demo-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div style="padding: 40px; text-align: center;">
+                <h2 style="color: #ffffff; margin-bottom: 16px;">Демо Модальное Окно</h2>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 24px;">
+                    Это тестовое модальное окно для демонстрации функциональности.
+                </p>
+                <div class="mini-orb" style="margin: 0 auto 24px;"></div>
+                <button class="btn btn--primary" onclick="closeModal()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demo-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Performance info
+            const perfInfo = document.getElementById('perf-info');
+            if (perfInfo) {
+                const loadTime = performance.now();
+                perfInfo.innerHTML = `
+                    Время загрузки: ${loadTime.toFixed(2)}ms<br>
+                    User Agent: ${navigator.userAgent.split(' ')[0]}<br>
+                    Viewport: ${window.innerWidth}x${window.innerHeight}
+                `;
+            }
+
+            // Test modal
+            const testModalBtn = document.getElementById('test-modal');
+            const demoModal = document.getElementById('demo-modal');
+            
+            if (testModalBtn && demoModal) {
+                testModalBtn.addEventListener('click', () => {
+                    demoModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            // Close modal function
+            window.closeModal = function() {
+                if (demoModal) {
+                    demoModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            };
+
+            // Close modal on click outside
+            if (demoModal) {
+                demoModal.addEventListener('click', (e) => {
+                    if (e.target === demoModal) {
+                        closeModal();
+                    }
+                });
+
+                // Close modal on ESC
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        closeModal();
+                    }
+                });
+
+                // Close button
+                const closeBtn = demoModal.querySelector('.modal-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', closeModal);
+                }
+            }
+
+            // Animation test
+            const animationBtn = document.getElementById('demo-animation');
+            if (animationBtn) {
+                animationBtn.addEventListener('click', () => {
+                    const miniOrb = document.querySelector('.mini-orb');
+                    if (miniOrb) {
+                        miniOrb.style.animation = 'none';
+                        setTimeout(() => {
+                            miniOrb.style.animation = 'pulse 2s infinite, rotate 3s linear infinite';
+                        }, 100);
+                    }
+                });
+            }
+
+            // Parallax test
+            const parallaxBtn = document.getElementById('test-parallax');
+            let parallaxEnabled = false;
+            
+            if (parallaxBtn) {
+                parallaxBtn.addEventListener('click', () => {
+                    parallaxEnabled = !parallaxEnabled;
+                    parallaxBtn.textContent = parallaxEnabled ? 'Выключить параллакс' : 'Включить параллакс';
+                    
+                    if (parallaxEnabled) {
+                        window.addEventListener('scroll', handleParallax);
+                    } else {
+                        window.removeEventListener('scroll', handleParallax);
+                        // Reset transforms
+                        document.querySelectorAll('.demo-card').forEach(card => {
+                            card.style.transform = '';
+                        });
+                    }
+                });
+            }
+
+            function handleParallax() {
+                const scrolled = window.pageYOffset;
+                const cards = document.querySelectorAll('.demo-card');
+                
+                cards.forEach((card, index) => {
+                    const rate = scrolled * -0.3;
+                    const offset = rate * (index % 3 + 1) * 0.1;
+                    card.style.transform = `translateY(${offset}px)`;
+                });
+            }
+
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe demo cards
+            document.querySelectorAll('.demo-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
