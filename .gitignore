@@ -1,0 +1,41 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+server.log
+
+# Dependencies
+node_modules/
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Build outputs
+dist/
+build/
+
+# Large files
+*.zip
+generated_image.png
+
+# Local development
+*.local.json
