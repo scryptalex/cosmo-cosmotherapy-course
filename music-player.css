@@ -1,0 +1,404 @@
+/* Cosmic Music Player Styles */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, rgba(15, 15, 25, 0.95), rgba(31, 31, 50, 0.95));
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    min-width: 350px;
+    max-width: 500px;
+    overflow: hidden;
+}
+
+.player-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+.player-toggle:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.player-toggle.active {
+    background: rgba(138, 43, 226, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px 20px 0 0;
+}
+
+.music-icon {
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.player-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.player-content {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.current-station {
+    flex: 1;
+}
+
+.station-name {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.station-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-btn {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(59, 130, 246, 0.3));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.control-btn:hover {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.5), rgba(59, 130, 246, 0.5));
+    transform: scale(1.05);
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.volume-icon {
+    font-size: 0.9rem;
+}
+
+#volume-slider {
+    width: 80px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+#volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    border: none;
+}
+
+.player-status {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+}
+
+.stations-container {
+    margin-bottom: 20px;
+}
+
+.station-category {
+    margin-bottom: 25px;
+}
+
+.station-category h4 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stations-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.station-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.station-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.station-card.active {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(59, 130, 246, 0.2));
+    border-color: var(--primary-color);
+}
+
+.station-icon {
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+.station-info {
+    flex: 1;
+}
+
+.station-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.station-genre {
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.station-desc {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    line-height: 1.3;
+}
+
+.generator-card {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.generator-card .station-info {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.generator-controls {
+    width: 100%;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.player-visualization {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#visualizer-canvas {
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(10, 10, 30, 0.8), rgba(30, 10, 50, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    height: 80px;
+}
+
+/* Generator-specific controls */
+.generator-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.generator-control label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.generator-control input[type="range"] {
+    width: 120px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.generator-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .music-player {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+        max-width: none;
+    }
+    
+    .player-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .player-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .volume-control {
+        flex: 1;
+        justify-content: flex-end;
+    }
+    
+    #volume-slider {
+        width: 100px;
+    }
+    
+    .stations-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .music-player {
+        bottom: 5px;
+        right: 5px;
+        left: 5px;
+    }
+    
+    .player-content {
+        padding: 15px;
+        max-height: 60vh;
+    }
+    
+    .station-card {
+        padding: 10px;
+    }
+    
+    .station-title {
+        font-size: 0.85rem;
+    }
+    
+    .station-desc {
+        font-size: 0.7rem;
+    }
+}
+
+/* Loading Animation */
+.loading-animation {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Audio visualization effects */
+.playing-indicator {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    margin-right: 8px;
+    animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { 
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Cosmic theme enhancements */
+.music-player::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(138, 43, 226, 0.1) 50%, transparent 70%);
+    opacity: 0.5;
+    pointer-events: none;
+    animation: cosmic-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes cosmic-shimmer {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}

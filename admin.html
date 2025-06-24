@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - Космотерапия</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cosmic-style.css">
+    <link rel="stylesheet" href="admin-style.css">
+    <link rel="stylesheet" href="music-player.css">
+</head>
+<body>
+    <!-- Звездное небо фон -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <!-- Админ навигация -->
+    <nav class="admin-nav">
+        <div class="nav-container">
+            <div class="nav-logo">🔧 АДМИН-ПАНЕЛЬ КОСМОТЕРАПИИ</div>
+            <div class="nav-links">
+                <button class="nav-link active" data-section="dashboard">Дашборд</button>
+                <button class="nav-link" data-section="users">Пользователи</button>
+                <button class="nav-link" data-section="payments">Платежи</button>
+                <button class="nav-link" data-section="avatars">Аватары</button>
+                <button class="nav-link" data-section="content">Контент</button>
+                <button class="nav-link" data-section="analytics">Аналитика</button>
+            </div>
+            <div class="admin-info">
+                <span>👤 Администратор</span>
+                <button class="btn btn--secondary" onclick="window.location.href='index.html'">На сайт</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Дашборд -->
+    <div id="dashboard" class="admin-section active">
+        <div class="container">
+            <h1>Панель управления</h1>
+            
+            <!-- Статистика -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-content">
+                        <h3 id="total-users">0</h3>
+                        <p>Всего пользователей</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-content">
+                        <h3 id="total-revenue">₽0</h3>
+                        <p>Общий доход</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3 id="active-subscriptions">0</h3>
+                        <p>Активные подписки</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🤖</div>
+                    <div class="stat-content">
+                        <h3 id="avatar-sessions">0</h3>
+                        <p>Сессии с аватарами</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Быстрые действия -->
+            <div class="quick-actions">
+                <h2>Быстрые действия</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="createTestUser()">
+                        <span class="action-icon">👤</span>
+                        Создать тестового пользователя
+                    </button>
+                    <button class="action-btn" onclick="generateTestPayments()">
+                        <span class="action-icon">💳</span>
+                        Сгенерировать тестовые платежи
+                    </button>
+                    <button class="action-btn" onclick="resetAvatarSessions()">
+                        <span class="action-icon">🔄</span>
+                        Сбросить сессии аватаров
+                    </button>
+                    <button class="action-btn" onclick="exportData()">
+                        <span class="action-icon">📥</span>
+                        Экспорт данных
+                    </button>
+                </div>
+            </div>
+
+            <!-- Последние активности -->
+            <div class="recent-activity">
+                <h2>Последние активности</h2>
+                <div class="activity-list" id="activity-list">
+                    <!-- Активности будут загружены динамически -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Пользователи -->
+    <div id="users" class="admin-section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Управление пользователями</h1>
+                <button class="btn btn--primary" onclick="showCreateUserModal()">Добавить пользователя</button>
+            </div>
+
+            <!-- Фильтры -->
+            <div class="filters">
+                <input type="text" id="user-search" placeholder="Поиск по имени или email..." class="search-input">
+                <select id="subscription-filter" class="filter-select">
+                    <option value="">Все подписки</option>
+                    <option value="Базовый курс">Базовый курс</option>
+                    <option value="Премиум">Премиум</option>
+                    <option value="VIP">VIP</option>
+                </select>
+            </div>
+
+            <!-- Таблица пользователей -->
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Имя</th>
+                            <th>Email</th>
+                            <th>Телефон</th>
+                            <th>Подписка</th>
+                            <th>Прогресс</th>
+                            <th>Регистрация</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table-body">
+                        <!-- Данные пользователей -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Платежи -->
+    <div id="payments" class="admin-section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Управление платежами</h1>
+                <button class="btn btn--primary" onclick="downloadPaymentReport()">Скачать отчет</button>
+            </div>
+
+            <!-- Статистика платежей -->
+            <div class="payment-stats">
+                <div class="payment-stat">
+                    <h3 id="payments-today">0</h3>
+                    <p>Платежей сегодня</p>
+                </div>
+                <div class="payment-stat">
+                    <h3 id="revenue-today">₽0</h3>
+                    <p>Доход сегодня</p>
+                </div>
+                <div class="payment-stat">
+                    <h3 id="conversion-rate">0%</h3>
+                    <p>Конверсия</p>
+                </div>
+            </div>
+
+            <!-- Таблица платежей -->
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Пользователь</th>
+                            <th>Тариф</th>
+                            <th>Сумма</th>
+                            <th>Метод</th>
+                            <th>Статус</th>
+                            <th>Дата</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody id="payments-table-body">
+                        <!-- Данные платежей -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Аватары -->
+    <div id="avatars" class="admin-section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Управление аватарами</h1>
+                <button class="btn btn--primary" onclick="testAvatarAPI()">Тест API</button>
+            </div>
+
+            <!-- Статистика аватаров -->
+            <div class="avatar-stats-grid">
+                <div class="avatar-stat-card" data-avatar="cosmo_master">
+                    <h3>🧙‍♂️ Мастер Космотерапии</h3>
+                    <div class="avatar-metrics">
+                        <span class="metric">Сессий: <strong id="cosmo-sessions">0</strong></span>
+                        <span class="metric">Сообщений: <strong id="cosmo-messages">0</strong></span>
+                        <span class="metric">Статус: <strong class="status-online">Онлайн</strong></span>
+                    </div>
+                    <button class="btn btn--secondary" onclick="manageAvatar('cosmo_master')">Управление</button>
+                </div>
+
+                <div class="avatar-stat-card" data-avatar="ionetics_practitioner">
+                    <h3>⚡ Практик Ионетики</h3>
+                    <div class="avatar-metrics">
+                        <span class="metric">Сессий: <strong id="ionetics-sessions">0</strong></span>
+                        <span class="metric">Сообщений: <strong id="ionetics-messages">0</strong></span>
+                        <span class="metric">Статус: <strong class="status-online">Онлайн</strong></span>
+                    </div>
+                    <button class="btn btn--secondary" onclick="manageAvatar('ionetics_practitioner')">Управление</button>
+                </div>
+
+                <div class="avatar-stat-card" data-avatar="transformation_guide">
+                    <h3>🌟 Гид по Трансформации</h3>
+                    <div class="avatar-metrics">
+                        <span class="metric">Сессий: <strong id="transformation-sessions">0</strong></span>
+                        <span class="metric">Сообщений: <strong id="transformation-messages">0</strong></span>
+                        <span class="metric">Статус: <strong class="status-online">Онлайн</strong></span>
+                    </div>
+                    <button class="btn btn--secondary" onclick="manageAvatar('transformation_guide')">Управление</button>
+                </div>
+            </div>
+
+            <!-- Логи чатов -->
+            <div class="chat-logs">
+                <h2>Логи чатов</h2>
+                <div class="logs-container" id="chat-logs">
+                    <!-- Логи будут загружены динамически -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контент -->
+    <div id="content" class="admin-section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Управление контентом</h1>
+                <button class="btn btn--primary" onclick="uploadContent()">Загрузить контент</button>
+            </div>
+
+            <!-- Модули курса -->
+            <div class="course-modules">
+                <div class="module-card">
+                    <h3>Модуль 1: Основы Космотерапии</h3>
+                    <div class="module-stats">
+                        <span>Уроков: 5</span>
+                        <span>Завершили: 12 чел.</span>
+                        <span>Среднее время: 4.5 ч</span>
+                    </div>
+                    <div class="module-actions">
+                        <button class="btn btn--secondary">Редактировать</button>
+                        <button class="btn btn--outline">Статистика</button>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <h3>Модуль 2: Ионетика и продление жизни</h3>
+                    <div class="module-stats">
+                        <span>Уроков: 5</span>
+                        <span>Завершили: 8 чел.</span>
+                        <span>Среднее время: 5.2 ч</span>
+                    </div>
+                    <div class="module-actions">
+                        <button class="btn btn--secondary">Редактировать</button>
+                        <button class="btn btn--outline">Статистика</button>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <h3>Модуль 3: Самосовершенствование</h3>
+                    <div class="module-stats">
+                        <span>Уроков: 5</span>
+                        <span>Завершили: 6 чел.</span>
+                        <span>Среднее время: 4.8 ч</span>
+                    </div>
+                    <div class="module-actions">
+                        <button class="btn btn--secondary">Редактировать</button>
+                        <button class="btn btn--outline">Статистика</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Аналитика -->
+    <div id="analytics" class="admin-section">
+        <div class="container">
+            <h1>Аналитика и отчеты</h1>
+            
+            <!-- Графики -->
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3>Регистрации по дням</h3>
+                    <canvas id="registrations-chart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Доходы по тарифам</h3>
+                    <canvas id="revenue-chart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Активность аватаров</h3>
+                    <canvas id="avatars-chart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Прогресс по модулям</h3>
+                    <canvas id="progress-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="payment.js"></script>
+    <script src="avatar-system.js"></script>
+    <script src="music-player.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

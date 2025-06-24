@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="cosmic-style.css">
+    <link rel="stylesheet" href="music-player.css">
+    <script src="auth.js" defer></script>
+    <script src="payment.js" defer></script>
+    <script src="avatar-system.js" defer></script>
+    <script src="music-player.js" defer></script>
 </head>
 <body>
     <!-- Звездное небо фон -->
@@ -26,6 +31,11 @@
                 <button class="nav-link" data-page="avatars">Аватары</button>
                 <button class="nav-link" data-page="pricing">Тарифы</button>
                 <button class="nav-link" data-page="meditation">Медитация</button>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn--primary" onclick="showLoginModal()">Войти</button>
+                <button class="btn btn--secondary" onclick="showRegisterModal()">Регистрация</button>
+                <button class="btn btn--outline" onclick="window.location.href='admin.html'" style="margin-left: 10px;">Админ</button>
             </div>
         </div>
     </nav>
@@ -226,6 +236,12 @@
                         <button class="btn btn--primary avatar-chat-btn">Общаться с аватаром</button>
                     </div>
                 </div>
+            </div>
+
+            <!-- Контейнер для виджетов аватаров -->
+            <div id="avatars-container" class="avatars-widgets">
+                <h2>Интерактивные консультации с аватарами</h2>
+                <!-- Виджеты аватаров будут добавлены динамически -->
             </div>
         </div>
     </div>

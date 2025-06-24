@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест музыкального плеера</title>
+    <link rel="stylesheet" href="cosmic-style.css">
+    <link rel="stylesheet" href="music-player.css">
+</head>
+<body>
+    <div style="padding: 50px; text-align: center;">
+        <h1 style="color: white;">🎵 Тест космического музыкального плеера</h1>
+        <p style="color: rgba(255,255,255,0.7); margin: 20px 0;">
+            Музыкальный плеер должен появиться в правом нижнем углу через 1 секунду.<br>
+            Нажмите на него, чтобы развернуть и выбрать радиостанцию или генератор.
+        </p>
+        
+        <div style="margin: 30px 0;">
+            <button onclick="testAutoplay()" style="padding: 10px 20px; margin: 10px; background: #8B5CF6; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                Тест автозапуска
+            </button>
+            <button onclick="testGenerators()" style="padding: 10px 20px; margin: 10px; background: #3B82F6; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                Тест генераторов
+            </button>
+            <button onclick="testVisualizer()" style="padding: 10px 20px; margin: 10px; background: #10B981; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                Тест визуализатора
+            </button>
+        </div>
+        
+        <div id="test-results" style="margin-top: 30px; color: white; font-family: monospace; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;"></div>
+    </div>
+
+    <script src="music-player.js"></script>
+    <script>
+        function log(message) {
+            const results = document.getElementById('test-results');
+            results.innerHTML += `<div>[${new Date().toLocaleTimeString()}] ${message}</div>`;
+        }
+
+        function testAutoplay() {
+            log('🎵 Тестирование автозапуска SomaFM Groove Salad...');
+            if (window.cosmicPlayer) {
+                cosmicPlayer.selectStation('groovesalad');
+                log('✅ Groove Salad запущен');
+            } else {
+                log('❌ Музыкальный плеер не инициализирован');
+            }
+        }
+
+        function testGenerators() {
+            log('🎛️ Тестирование генераторов медитативной музыки...');
+            if (window.cosmicPlayer) {
+                setTimeout(() => {
+                    cosmicPlayer.selectStation('cosmicmeditation');
+                    log('✅ Cosmic Meditation генератор запущен');
+                }, 1000);
+                
+                setTimeout(() => {
+                    cosmicPlayer.selectStation('binauralbeats');
+                    log('✅ Binaural Beats генератор запущен');
+                }, 3000);
+                
+                setTimeout(() => {
+                    cosmicPlayer.selectStation('tibetanbowls');
+                    log('✅ Tibetan Bowls генератор запущен');
+                }, 5000);
+            } else {
+                log('❌ Музыкальный плеер не инициализирован');
+            }
+        }
+
+        function testVisualizer() {
+            log('📊 Тестирование визуализатора...');
+            const canvas = document.getElementById('visualizer-canvas');
+            if (canvas) {
+                log('✅ Canvas визуализатора найден');
+                log('📊 Визуализатор должен показывать волны при воспроизведении');
+            } else {
+                log('❌ Canvas визуализатора не найден');
+            }
+        }
+
+        // Monitor player initialization
+        setTimeout(() => {
+            if (window.cosmicPlayer) {
+                log('✅ Космический музыкальный плеер успешно инициализирован');
+                log(`📻 Доступно радиостанций: ${cosmicPlayer.radioStations.filter(s => s.type === 'radio').length}`);
+                log(`🎛️ Доступно генераторов: ${cosmicPlayer.radioStations.filter(s => s.type === 'generator').length}`);
+            } else {
+                log('❌ Ошибка инициализации музыкального плеера');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
